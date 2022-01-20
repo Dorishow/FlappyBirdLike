@@ -2,18 +2,16 @@
 
 [ext_resource path="res://bird/Bird.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TestingScene/Ground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://enemies/cat/Cat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/tools/spawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-
 func _physics_process(delta):
 	var birdPosition = $Bird.global_position
-	if($Cat/TargetCursor):
-		$Cat/TargetCursor.updateTarget(birdPosition)
-	if($Cat2/TargetCursor):
-		$Cat2/TargetCursor.updateTarget(birdPosition)
+	var cats = get_tree().get_nodes_in_group(\"target\")
+	for cat in cats:
+		cat.updateTarget(birdPosition)
 "
 
 [node name="TestingScene" type="Node2D"]
@@ -27,8 +25,4 @@ position = Vector2( 316, 139 )
 [node name="Ground" parent="." instance=ExtResource( 2 )]
 position = Vector2( 25, 553 )
 
-[node name="Cat" parent="." instance=ExtResource( 3 )]
-position = Vector2( 884, 504 )
-
-[node name="Cat2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 601, 125 )
+[node name="spawner" parent="." instance=ExtResource( 4 )]

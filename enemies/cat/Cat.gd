@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
+export(int) var speed = 3
+
 func _physics_process(delta):
 	autodeleteWhenIsNotVisible()
-	move_and_collide(Vector2(-1,0))
+	move_and_collide(Vector2(-speed,0))
 	pass
 
 func autodeleteWhenIsNotVisible():
