@@ -1,3 +1,32 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var cat = preload(\"res://enemies/cat/Cat.tscn\")
+
+func _ready():
+	var instancePosition = Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/1.2)
+	instanceCat(instancePosition)
+	pass
+
+func instanceCat(instancePosition):
+	var instanceCat = cat.instance()
+	instanceCat.position = instancePosition
+	add_child(instanceCat)
+	pass
+
+
+func _on_Timer_timeout():
+	instanceCat(Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/1.2))
+	pass # Replace with function body.
+"
 
 [node name="spawner" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

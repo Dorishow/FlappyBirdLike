@@ -23,7 +23,7 @@ texture = ExtResource( 1 )
 position = Vector2( 0.5, 1.5 )
 shape = SubResource( 3 )
 
-[node name="TargetCursor" type="Node2D" parent="."]
+[node name="TargetCursor" type="Node2D" parent="." groups=["target"]]
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="TargetCursor"]
