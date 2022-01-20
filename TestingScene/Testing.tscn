@@ -10,8 +10,10 @@ script/source = "extends Node2D
 
 func _physics_process(delta):
 	var birdPosition = $Bird.global_position
-	$Cat/TargetCursor.updateTarget(birdPosition)
-	$Cat2/TargetCursor.updateTarget(birdPosition)
+	if($Cat/TargetCursor):
+		$Cat/TargetCursor.updateTarget(birdPosition)
+	if($Cat2/TargetCursor):
+		$Cat2/TargetCursor.updateTarget(birdPosition)
 "
 
 [node name="TestingScene" type="Node2D"]
@@ -23,9 +25,10 @@ script = SubResource( 1 )
 position = Vector2( 316, 139 )
 
 [node name="Ground" parent="." instance=ExtResource( 2 )]
+position = Vector2( 25, 553 )
 
 [node name="Cat" parent="." instance=ExtResource( 3 )]
-position = Vector2( 841, 407 )
+position = Vector2( 884, 504 )
 
 [node name="Cat2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 601, 125 )
