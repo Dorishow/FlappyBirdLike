@@ -19,6 +19,7 @@ func instanceCat(instancePosition):
 
 func _on_Timer_timeout():
 	instanceCat(Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/1.2))
+	instanceCat(Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/10))
 	pass # Replace with function body.
 "
 
