@@ -16,10 +16,15 @@ func instanceCat(instancePosition):
 	add_child(instanceCat)
 	pass
 
+func getRandomNumber():
+	var randomNumber = RandomNumberGenerator.new()
+	randomNumber.randomize()
+	return randomNumber.randi_range(-100, 100)
 
 func _on_Timer_timeout():
-	instanceCat(Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/1.2))
-	instanceCat(Vector2(get_viewport_rect().size.x, get_viewport_rect().size.y/10))
+	var rndmNumber = getRandomNumber()
+	instanceCat(Vector2(get_viewport_rect().size.x + rndmNumber, get_viewport_rect().size.y - 500))
+	instanceCat(Vector2(get_viewport_rect().size.x + (rndmNumber * -1), get_viewport_rect().size.y - 100))
 	pass # Replace with function body.
 "
 
